@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './categories_screen.dart';
 import './favorite_meals_screen.dart';
+import './home_screen.dart';
 import '../widgets/main_drawer.dart';
 
 import '../models/meal.dart';
@@ -17,7 +18,7 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   List<Map<String, Object>> _pages;
-  int _selectedPageIndex = 0;
+  int _selectedPageIndex = 1;
 
   void _selectPage(int index) {
     setState(() {
@@ -33,11 +34,15 @@ class _TabsScreenState extends State<TabsScreen> {
         "title": "Categories",
       },
       {
+        "page": HomeScreen(),
+        "title": "Meals App",
+      },
+      {
         "page": FavoriteMealsScreen(widget._favoriteMeals),
         "title": "Favorite Meals",
       },
     ];
-    
+
     super.initState();
   }
 
@@ -60,6 +65,10 @@ class _TabsScreenState extends State<TabsScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
             label: "Categories",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.star),

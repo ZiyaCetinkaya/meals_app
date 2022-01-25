@@ -49,6 +49,37 @@ class MealItem extends StatelessWidget {
     Navigator.of(context).pushNamed(MealDetailsScreen.routeName, arguments: id);
   }
 
+  Widget _buildImageAttribute(
+      BuildContext context, String text, IconData icon) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          bottomLeft: Radius.circular(25),
+        ),
+        color: Theme.of(context).accentColor,
+      ),
+      padding: EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Icon(
+            icon,
+            color: Colors.black.withOpacity(0.7),
+            size: 30,
+          ),
+          SizedBox(width: 6),
+          Text(
+            text,
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -76,23 +107,33 @@ class MealItem extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 20,
+                  bottom: 0,
                   right: 0,
                   child: Container(
-                    width: 300,
-                    color: Colors.black54,
-                    padding: EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 10,
-                    ),
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 26,
-                        color: Colors.white,
-                      ),
-                      softWrap: true,
-                      overflow: TextOverflow.fade,
+                    height: 250,
+                    width: 120,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        _buildImageAttribute(
+                          context,
+                          '$duration min',
+                          Icons.schedule,
+                        ),
+                        SizedBox(height: 10),
+                        _buildImageAttribute(
+                          context,
+                          '$_complexityText',
+                          Icons.work,
+                        ),
+                        SizedBox(height: 10),
+                        _buildImageAttribute(
+                          context,
+                          '$_affordabilitytext',
+                          Icons.attach_money,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -100,37 +141,11 @@ class MealItem extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Icon(Icons.schedule),
-                        SizedBox(width: 6),
-                        Text('$duration min'),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Icon(Icons.work),
-                        SizedBox(width: 6),
-                        Text('$_complexityText'),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Icon(Icons.attach_money),
-                        SizedBox(width: 6),
-                        Text('$_affordabilitytext'),
-                      ],
-                    ),
-                  ),
-                ],
+              child: Center(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
               ),
             ),
           ],
