@@ -91,6 +91,7 @@ const DUMMY_MEALS = const [
     isVegan: true,
     isVegetarian: true,
     isLactoseFree: true,
+    popularity: 200
   ),
   Meal(
     id: 'm2',
@@ -119,6 +120,7 @@ const DUMMY_MEALS = const [
     isVegan: false,
     isVegetarian: false,
     isLactoseFree: false,
+    popularity: 180
   ),
   Meal(
     id: 'm3',
@@ -151,6 +153,7 @@ const DUMMY_MEALS = const [
     isVegan: false,
     isVegetarian: false,
     isLactoseFree: true,
+    popularity: 230
   ),
   Meal(
     id: 'm4',
@@ -186,6 +189,7 @@ const DUMMY_MEALS = const [
     isVegan: false,
     isVegetarian: false,
     isLactoseFree: false,
+    popularity: 80
   ),
   Meal(
     id: 'm5',
@@ -222,6 +226,7 @@ const DUMMY_MEALS = const [
     isVegan: false,
     isVegetarian: true,
     isLactoseFree: true,
+    popularity: 100
   ),
   Meal(
     id: 'm6',
@@ -258,6 +263,7 @@ const DUMMY_MEALS = const [
     isVegan: false,
     isVegetarian: true,
     isLactoseFree: false,
+    popularity: 300
   ),
   Meal(
     id: 'm7',
@@ -289,6 +295,7 @@ const DUMMY_MEALS = const [
     isVegan: false,
     isVegetarian: true,
     isLactoseFree: false,
+    popularity: 240
   ),
   Meal(
     id: 'm8',
@@ -322,6 +329,7 @@ const DUMMY_MEALS = const [
     isVegan: false,
     isVegetarian: false,
     isLactoseFree: true,
+    popularity: 280
   ),
   Meal(
     id: 'm9',
@@ -371,6 +379,7 @@ const DUMMY_MEALS = const [
     isVegan: false,
     isVegetarian: true,
     isLactoseFree: false,
+    popularity: 500
   ),
   Meal(
     id: 'm10',
@@ -405,5 +414,6 @@ const DUMMY_MEALS = const [
     isVegan: true,
     isVegetarian: true,
     isLactoseFree: true,
+    popularity: 150
   ),
 ];

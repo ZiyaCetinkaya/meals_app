@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/models/meal.dart';
-import 'package:flutter_complete_guide/screens/meal_details_screen.dart';
+
+import '../models/meal.dart';
+import '../screens/meal_details_screen.dart';
+import '../helpers/enum_to_text.dart';
 
 class MealItem extends StatelessWidget {
   final String id;
@@ -18,32 +20,6 @@ class MealItem extends StatelessWidget {
     @required this.complexity,
     @required this.affordability,
   });
-
-  String get _complexityText {
-    switch (complexity) {
-      case COMPLEXITY.Challenging:
-        return "Challenging";
-      case COMPLEXITY.Hard:
-        return "Hard";
-      case COMPLEXITY.Simple:
-        return "Simple";
-      default:
-        return "Unknown";
-    }
-  }
-
-  String get _affordabilitytext {
-    switch (affordability) {
-      case AFFORDABILITY.Affordable:
-        return "Affordable";
-      case AFFORDABILITY.Luxurious:
-        return "Luxurious";
-      case AFFORDABILITY.Pricey:
-        return "Pricey";
-      default:
-        return "Unknown";
-    }
-  }
 
   void _selectMeal(BuildContext context) {
     Navigator.of(context).pushNamed(MealDetailsScreen.routeName, arguments: id);
@@ -66,7 +42,7 @@ class MealItem extends StatelessWidget {
           Icon(
             icon,
             color: Colors.black.withOpacity(0.7),
-            size: 30,
+            size: 24,
           ),
           SizedBox(width: 6),
           Text(
@@ -119,19 +95,19 @@ class MealItem extends StatelessWidget {
                         _buildImageAttribute(
                           context,
                           '$duration min',
-                          Icons.schedule,
+                          Icons.timer_outlined,
                         ),
                         SizedBox(height: 10),
                         _buildImageAttribute(
                           context,
-                          '$_complexityText',
-                          Icons.work,
+                          '${EnumToText.getComplexityText(complexity)}',
+                          Icons.fitness_center_outlined,
                         ),
                         SizedBox(height: 10),
                         _buildImageAttribute(
                           context,
-                          '$_affordabilitytext',
-                          Icons.attach_money,
+                          '${EnumToText.getAffordabilityText(affordability)}',
+                          Icons.paid_outlined,
                         ),
                       ],
                     ),

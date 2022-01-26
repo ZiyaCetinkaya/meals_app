@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/dummy_data.dart';
+import '../helpers/enum_to_text.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   static const routeName = "/meal-details";
@@ -10,39 +11,136 @@ class MealDetailsScreen extends StatelessWidget {
 
   const MealDetailsScreen(this._toggleFavorite, this._isMealFavorite);
 
-  Widget _buildSectionTitle(BuildContext ctx, String text) {
+  Widget _buildImageSection(BuildContext ctx, String imageUrl, String mealId) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Text(
-        text,
-        style: Theme.of(ctx).textTheme.headline6,
+      width: double.infinity,
+      child: Stack(
+        children: [
+          Image.network(
+            imageUrl,
+            fit: BoxFit.fill,
+          ),
+          Positioned(
+            bottom: 15,
+            right: 15,
+            child: CircleAvatar(
+              radius: 25,
+              backgroundColor: Colors.white,
+              child: IconButton(
+                onPressed: () => _toggleFavorite(mealId),
+                icon: Icon(
+                  _isMealFavorite(mealId) ? Icons.star : Icons.star_border,
+                  size: 30,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAttributesSection(duration, complexity, affordability) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            children: [
+              Icon(Icons.timer_outlined),
+              SizedBox(
+                height: 5,
+              ),
+              Text('${duration} min.'),
+            ],
+          ),
+          Column(
+            children: [
+              Icon(Icons.fitness_center_outlined),
+              SizedBox(
+                height: 5,
+              ),
+              Text('${EnumToText.getComplexityText(complexity)}'),
+            ],
+          ),
+          Column(
+            children: [
+              Icon(Icons.paid_outlined),
+              SizedBox(
+                height: 5,
+              ),
+              Text('${EnumToText.getAffordabilityText(affordability)}'),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSectionTitle(BuildContext ctx, String text, int count) {
+    return Container(
+      width: double.infinity,
+      color: Theme.of(ctx).primaryColor,
+      padding: EdgeInsets.all(10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            child: Text(
+              "$count",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildSection(BuildContext ctx, List<String> items) {
     return Container(
+      height: items.length * 30.00,
+      width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(10),
       ),
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
-      height: 200,
-      width: 300,
       child: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (ctx, index) => Card(
-          color: Theme.of(ctx).accentColor,
-          child: Padding(
+        itemBuilder: (ctx, index) {
+          return Container(
             padding: const EdgeInsets.symmetric(
               vertical: 5,
-              horizontal: 10,
+              horizontal: 15,
             ),
-            child: Text(items[index]),
-          ),
-        ),
+            color: index.isEven
+                ? Colors.transparent
+                : Colors.grey.withOpacity(0.2),
+            child: Text(
+              "${index + 1}: ${items[index]}",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          );
+        },
+        itemCount: items.length,
       ),
     );
   }
@@ -59,29 +157,32 @@ class MealDetailsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 300,
-              width: double.infinity,
-              child: Image.network(
-                _selectedMeal.imageUrl,
-                fit: BoxFit.contain,
-              ),
+            _buildImageSection(context, _selectedMeal.imageUrl, _mealId),
+            _buildAttributesSection(
+              _selectedMeal.duration,
+              _selectedMeal.complexity,
+              _selectedMeal.affordability,
             ),
-            _buildSectionTitle(context, "Ingredients"),
-            _buildSection(context, _selectedMeal.ingredients),
-            Divider(),
-            _buildSectionTitle(context, "Steps"),
-            _buildSection(context, _selectedMeal.steps),
+            _buildSectionTitle(
+              context,
+              "Ingredients",
+              _selectedMeal.ingredients.length,
+            ),
+            _buildSection(
+              context,
+              _selectedMeal.ingredients,
+            ),
+            _buildSectionTitle(
+              context,
+              "Steps",
+              _selectedMeal.steps.length,
+            ),
+            _buildSection(
+              context,
+              _selectedMeal.steps,
+            ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          _isMealFavorite(_mealId) ? Icons.star : Icons.star_border,
-        ),
-        onPressed: () {
-          _toggleFavorite(_mealId);
-        },
       ),
     );
   }

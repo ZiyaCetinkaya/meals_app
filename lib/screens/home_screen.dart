@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/popular_meals.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
@@ -44,6 +47,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 20,
+              ),
+              PopularMeals(),
             ],
           ),
         ),
