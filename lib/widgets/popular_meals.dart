@@ -41,23 +41,26 @@ class PopularMeals extends StatelessWidget {
                       width: 180,
                       height: 210,
                       child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         elevation: 4,
                         child: Column(
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(5),
-                                topRight: Radius.circular(5),
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10),
                               ),
                               child: Image.network(
                                 _popularMeals[index].imageUrl,
                                 fit: BoxFit.cover,
-                                height: 160,
+                                height: 150,
                               ),
                             ),
                             Container(
                               width: 180,
-                              padding: EdgeInsets.all(5),
+                              padding: EdgeInsets.all(10),
                               child: Text(
                                 _popularMeals[index].title,
                                 softWrap: true,

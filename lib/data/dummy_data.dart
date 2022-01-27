@@ -8,51 +8,61 @@ const DUMMY_CATEGORIES = const [
     id: 'c1',
     title: 'Italian',
     color: Colors.purple,
+    createdAt: "2020-01-01",
   ),
   Category(
     id: 'c2',
     title: 'Quick & Easy',
     color: Colors.red,
+    createdAt: "2022-02-12",
   ),
   Category(
     id: 'c3',
     title: 'Hamburgers',
     color: Colors.orange,
+    createdAt: "2022-02-05",
   ),
   Category(
     id: 'c4',
     title: 'German',
     color: Colors.amber,
+    createdAt: "2021-10-09",
   ),
   Category(
     id: 'c5',
     title: 'Light & Lovely',
     color: Colors.blue,
+    createdAt: "2021-05-19",
   ),
   Category(
     id: 'c6',
     title: 'Exotic',
     color: Colors.green,
+    createdAt: "2021-08-10",
   ),
   Category(
     id: 'c7',
     title: 'Breakfast',
     color: Colors.lightBlue,
+    createdAt: "2021-09-01",
   ),
   Category(
     id: 'c8',
     title: 'Asian',
     color: Colors.lightGreen,
+    createdAt: "2020-11-14",
   ),
   Category(
     id: 'c9',
     title: 'French',
     color: Colors.pink,
+    createdAt: "2021-07-30",
   ),
   Category(
     id: 'c10',
     title: 'Summer',
     color: Colors.teal,
+    createdAt: "2022-01-12",
   ),
 ];
 
@@ -379,7 +389,7 @@ const DUMMY_MEALS = const [
     isVegan: false,
     isVegetarian: true,
     isLactoseFree: false,
-    popularity: 500
+    popularity: 110
   ),
   Meal(
     id: 'm10',
