@@ -1,16 +1,20 @@
-# meals_app
+# Meals App
 
-A new Flutter project.
+This is the second project which I developed in the flutter learning process.
 
-## Getting Started
+## About The App
+I did this project by following the course which is published by [Maximilian Schwarzmüller](https://www.udemy.com/user/academind) on Udemy. [Click here](https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps) to access this course. I made this application after watching the 7th part of the course. 
 
-This project is a starting point for a Flutter application.
+## New Features
 
-A few resources to get you started if this is your first Flutter project:
+Apart from the improvements which is made in the course, I made the following additions:
+* I renewed the designs of the category list, meal item and meal detail screens.
+* I added the HomeScreen screen:
+  - I added an item for HomeScreen to the BottomNavigationBar.
+  - I added the Search Meal field for the meal search process.
+  - I added the Popularity field to the Meal class. In HomeScreen, I ordered the meals according to the Popularity field and listed them in the Popular Meals area.
+  - I added the CreatedAt field to the Category class. In HomeScreen, I ordered the meals according to the CreatedAt field and listed them in the Last Added Categories area.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+As I complete the other sections in the course, I want to continue to share by making additions to the projects.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Watch Video](https://www.youtube.com/watch?v=AMJEMQZ_spI)
